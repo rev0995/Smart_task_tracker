@@ -100,11 +100,6 @@ To enable **email reminders**:
 
 ---
 
-## 📜 License
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## 📷 Screenshots
 ### Home Page
 ![Home Page](screenshots/homepage.png)
