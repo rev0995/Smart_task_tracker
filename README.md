@@ -46,7 +46,7 @@ With its clean interface and automated email reminder system, **Smart Task Track
 ## 📦 Getting Started
 
 ### Prerequisites
-- Python 3.x installed  
+- Python 3.10.11 or above installed  
 - Install dependencies:
 
 ```bash
@@ -66,12 +66,6 @@ With its clean interface and automated email reminder system, **Smart Task Track
 git clone https://github.com/rev0995/Smart_task_tracker.git
 cd Smart_task_tracker
 ```
-# 📝 Smart Task Tracker
-
-A lightweight and intuitive web application to manage tasks, deadlines, and reminders efficiently.  
-With a clean interface and automated email alert system, it ensures you never miss an important deadline.
-
----
 
 ## 📦 Installation
 
