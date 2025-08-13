@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Task Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='1.1') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Smart Task Tracker</h1>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
