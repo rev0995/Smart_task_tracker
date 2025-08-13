@@ -106,7 +106,13 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 ## 📷 Screenshots
-*(Optional: Add screenshots of your UI here for better portfolio appeal.)*
+### Home Page
+![Home Page](screenshots/homepage.png)
+
+### Email Configuration
+![Email Configuration](screenshots/emailconfig.png)
+### Task Configuration
+![Task Configuration](screenshots/taskconfig.png)
 
 ---
 
