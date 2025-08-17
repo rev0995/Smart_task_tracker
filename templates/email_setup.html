@@ -1,16 +1,16 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
+
 {% block content %}
-<h2>Email Configuration</h2>
-<form method="POST">
-    <label>Sender Gmail Address:</label>
-    <input type="email" name="sender_email" required>
-
-    <label>Gmail App Password:</label>
-    <input type="password" name="sender_password" required>
-
-    <label>Recipient Email Address:</label>
-    <input type="email" name="recipient_email" required>
-
-    <button type="submit" class="btn">Save Email Settings</button>
-</form>
+<div class="container">
+  <h1>Email Configuration</h1>
+  <form method="POST" action="{{ url_for('email_setup') }}">
+    <label for="sender_email">Sender Gmail Address</label>
+    <input type="email" id="sender_email" name="sender_email" required placeholder="your_email@gmail.com" />
+    <label for="sender_password">Gmail App Password</label>
+    <input type="password" id="sender_password" name="sender_password" required placeholder="App password" />
+    <label for="recipient_email">Recipient Email Address</label>
+    <input type="email" id="recipient_email" name="recipient_email" required placeholder="recipient_email@gmail.com" />
+    <button class="btn" type="submit">Save Settings</button>
+  </form>
+</div>
 {% endblock %}
