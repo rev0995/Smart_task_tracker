@@ -1,38 +1,48 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
+
 {% block content %}
-<div class="main-links">
-    <a href="{{ url_for('add_task') }}" class="btn">+ Add Task</a>
-    <a href="{{ url_for('email_setup') }}" class="btn">⚙ Configure Email Alerts</a>
-</div>
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Deadline</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="container card">
+    <h1>Don’t Let Deadlines Win</h1>
+    <div class="task-list-grid">
         {% for task in tasks %}
-        <tr>
-            <td>{{ task.title }}</td>
-            <td>{{ task.deadline.strftime('%Y-%m-%d %H:%M') }}</td>
-            <td>
-                {% if task.status == "Pending" %}
-                    <span class="status-pending">{{ task.status }}</span>
-                {% else %}
-                    <span class="status-completed">{{ task.status }}</span>
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-title">{{ task.title }}</span>
+                {% set delta = (task.deadline - datetime.utcnow()).days %}
+                <span class="days-left-badge">
+                    {% if task.status == "Completed" %}
+                        Completed
+                    {% elif delta < 0 %}
+                        Overdue
+                    {% elif delta == 0 %}
+                        Today
+                    {% elif delta == 1 %}
+                        1 day left
+                    {% else %}
+                        {{ delta }} days left
+                    {% endif %}
+                </span>
+            </div>
+            <!-- Add a section to display the task description -->
+            {% if task.description %}
+            <div class="task-description">
+                <p>{{ task.description }}</p>
+            </div>
+            {% endif %}
+            <div class="task-details">
+                <span><b>Deadline:</b> {{ task.deadline.strftime('%Y-%m-%d %H:%M') }}</span>
+            </div>
+            <div class="task-actions">
+                {% if task.status == 'Pending' %}
+                <a class="btn" href="{{ url_for('complete_task', id=task.id) }}">Complete</a>
                 {% endif %}
-            </td>
-            <td class="btn-container">
-                {% if task.status == "Pending" %}
-                <a href="{{ url_for('complete_task', id=task.id) }}" class="btn">Complete</a>
-                {% endif %}
-                <a href="{{ url_for('delete_task', id=task.id) }}" class="btn delete">Delete</a>
-            </td>
-        </tr>
+                <a class="btn delete" href="{{ url_for('delete_task', id=task.id) }}">Delete</a>
+            </div>
+        </div>
         {% endfor %}
-    </tbody>
-</table>
+        {% if not tasks %}
+        <p style="text-align:center;">No tasks yet. <a href="{{ url_for('add_task') }}">Add a task</a>.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
