@@ -1,173 +1,258 @@
-/* General Body and Layout Styling */
+/* General body and typography styling */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* IMPORTANT: The path below assumes background.jpg is in the same folder as style.css */
-    background-image: url('background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #495057;
-    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
     margin: 0;
     padding: 20px;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.container {
-    max-width: 800px;
-    margin: 40px auto;
-    /* New: Semi-transparent background that complements the image */
-    background: rgba(255, 255, 255, 0.6);
-    padding: 30px;
+/* Shared card styling for containers */
+.card {
+    background: #ffffff;
+    padding: 3rem;
     border-radius: 12px;
-    /* New: More subtle box shadow to match the lighter feel */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    /* New: Frosted glass effect for a modern look */
-    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    animation: fadeIn 0.8s ease-out;
 }
 
-h1 {
+/* --- Styles for the Login/Signup pages --- */
+.login-container {
+    max-width: 400px;
     text-align: center;
-    /* Changed title color to a dark green from the image */
-    color: #3e6d62;
-    font-weight: 600;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #e9ecef;
-    padding-bottom: 15px;
+    margin-top: 50px;
 }
 
-/* Table Styling */
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-top: 25px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+.login-container h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
 }
 
-th, td {
-    border: none;
-    padding: 15px;
+.login-container p {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.form-group {
     text-align: left;
+    margin-bottom: 1.5rem;
 }
 
-th {
-    background-color: #f7f8f9;
-    font-weight: bold;
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
     color: #495057;
-    text-transform: uppercase;
-    font-size: 0.9em;
 }
 
-td {
-    /* Keeping table cells white for readability */
-    background-color: #ffffff;
-    border-bottom: 1px solid #dee2e6;
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="datetime-local"],
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-tr:hover td {
-    background-color: #f1f3f5;
+input:focus,
+textarea:focus {
+    border-color: #5b806d;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(91, 128, 109, 0.25);
 }
 
-tr:last-child td {
-    border-bottom: none;
+.signup-link {
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    color: #6c757d;
 }
 
-/* Button and Form Styling */
+.signup-link a {
+    color: #5b806d;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+    color: #4a6a57;
+    text-decoration: underline;
+}
+
+/* --- End of Login/Signup styles --- */
+
+
+/* Main container for page content */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+}
+
+/* Heading styling */
+h1 {
+    text-align: left;
+    color: #3e6d62;
+    font-weight: 700;
+    margin-bottom: 32px;
+    font-size: 2.4rem;
+    letter-spacing: -1px;
+}
+
+/* Flex grid container for task cards */
+.task-list-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: flex-start;
+    margin-top: 24px;
+}
+
+/* Each task card */
+.task-card {
+    flex: 0 1 320px;
+    background: #fffffe;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(60, 60, 64, 0.08);
+    border: 1px solid #e9ecef;
+    padding: 22px 28px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+}
+
+.task-card:hover {
+    box-shadow: 0 8px 24px rgba(60, 60, 64, 0.12);
+}
+
+/* Header with task title and days left badge */
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #283d3b;
+}
+
+/* Days left badge */
+.days-left-badge {
+    font-size: 0.97em;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: #e4fae9;
+    color: #37a169;
+    font-weight: bold;
+}
+
+/* Task details */
+.task-details {
+    margin: 8px 0 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 1.01rem;
+}
+
+/* Status badges */
+.status-pending {
+    background: #fff5ec;
+    color: #ee964b;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 13px;
+}
+
+.status-completed {
+    background: #e4fae9;
+    color: #37a169;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 13px;
+}
+
+/* Actions container */
+.task-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+/* Buttons */
 .btn {
     display: inline-block;
-    padding: 10px 18px;
-    text-decoration: none;
+    padding: 8px 21px;
     background-color: #5b806d;
     color: white;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 8px; /* Consistent with other elements */
+    font-weight: 600;
     border: none;
     cursor: pointer;
     font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .btn:hover {
-    background-color: #3e6d62;
+    background-color: #4a6a57; /* Matches login button hover */
     transform: translateY(-2px);
 }
 
+/* Delete button style */
 .btn.delete {
     background-color: #d0535f;
 }
 
 .btn.delete:hover {
     background-color: #a9414b;
-    transform: translateY(-2px);
 }
 
-.btn-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    align-items: center;
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .task-list-grid {
+        gap: 16px;
+    }
+    .task-card {
+        flex: 1 1 260px;
+        padding: 14px 10px;
+    }
 }
 
-.main-links {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+@media (max-width: 600px) {
+    .task-list-grid {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .container {
+        padding: 10px;
+    }
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    /* Keeping forms opaque for better input visibility */
-    background-color: #f7f8f9;
-    padding: 25px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-form label {
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #495057;
-}
-
-form input[type="text"],
-form input[type="datetime-local"],
-form input[type="email"],
-form input[type="password"] {
-    margin-bottom: 20px;
-    padding: 12px;
-    border: 1px solid #ced4da;
-    border-radius: 6px;
-    font-size: 1em;
-    width: 100%;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-
-form input:focus {
-    border-color: #80bdff;
-    outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-form button[type="submit"] {
-    margin-top: 10px;
-    width: auto;
-    align-self: flex-start;
-}
-
-/* Status Styling */
-.status-pending {
-    color: #e88d5e;
-    font-weight: bold;
-}
-
-.status-completed {
-    color: #28a745;
-    font-weight: bold;
+/* Subtle animation for the container on load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
