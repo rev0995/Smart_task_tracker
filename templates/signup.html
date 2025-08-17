@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+  <h1>Sign Up</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <form method="POST" action="{{ url_for('signup') }}">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required placeholder="your_email@example.com" />
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required placeholder="Choose a password" />
+    <button class="btn" type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="{{ url_for('login') }}">Log in here</a>.</p>
+</div>
+{% endblock %}
